@@ -34,7 +34,7 @@ $(function(){
     var count_space = 0;
     anim_id = requestAnimationFrame(animation);
     $(document).on('keydown',function(e){
-        if(game_over===false){
+        if(game_over===false && count_space%2==0){
             var key = e.keyCode
             if(key===37 && move_left===false){
                 move_left=requestAnimationFrame(move_car_left);
