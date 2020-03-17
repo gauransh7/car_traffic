@@ -24,7 +24,7 @@ $(function(){
     var game_over = false;
     var car_speed = 3;
     var line_speed = 5;
-    var left_speed = 2+(score/400);
+    var left_speed = car_speed;
     var anim_id;
     var restart_div = $('#restart-div');
     var restart_btn = $('#restart');
@@ -88,6 +88,11 @@ $(function(){
     restart_btn.click(function() {
         location.reload();
     });
+
+    
+
+
+
     function move_car_left(){
         var main_car_left = parseInt(car.css('left'));
         if (game_over === false && main_car_left > 0) {
@@ -133,9 +138,10 @@ $(function(){
         score++;
         document.getElementById("score-value").innerHTML=score;
         document.getElementById("speed").innerHTML=parseFloat(line_speed).toFixed(2);;
-        if(score%400==0){
-            car_speed*=1.2;
-            line_speed*=1.2;
+        if(score%400==0 && car_speed<11){
+            car_speed+=1.2;
+            line_speed+=1.2;
+            left_speed=car_speed;
         }
         $(document).on('keydown',function(e){
             if(e===32){
